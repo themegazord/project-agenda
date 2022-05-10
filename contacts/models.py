@@ -1,4 +1,4 @@
-from unicodedata import category
+
 
 from django.db import models
 from django.utils import timezone
@@ -26,7 +26,7 @@ class Category(models.Model):
 
     
 class Contact(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=155)
     last_name = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=255)
     email = models.CharField(max_length=255, blank=True)

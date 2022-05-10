@@ -4,6 +4,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Nome</th>
                 <th>Sobrenome</th>
                 <th>Telefone</th>
@@ -12,16 +13,15 @@
         </thead>
         <tbody>
             {% for contact in contacts %}
-                {% if contact.show %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'see_contact' contact.id %}">{{ contact.name }}</a>
-                        </td>
-                        <td>{{ contact.last_name }}</td>
-                        <td>{{ contact.phone }}</td>
-                        <td>{{ contact.category }}</td>
-                    </tr>
-                {% endif %}
+                  <tr>
+                      <td>{{contact.id}}</td>
+                      <td>
+                          <a href="{% url 'see_contact' contact.id %}">{{ contact.name }}</a>
+                      </td>
+                      <td>{{ contact.last_name }}</td>
+                      <td>{{ contact.phone }}</td>
+                      <td>{{ contact.category }}</td>
+                  </tr>
             {% endfor %}
         </tbody>
     </table>
