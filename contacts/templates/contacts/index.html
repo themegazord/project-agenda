@@ -30,11 +30,11 @@
             {% for pagina in contacts.paginator.page_range %}
                 {% if contacts.number == pagina %}
                     <li class="page-item active">
-                        <a class="page-link" href="?p={{ pagina }}">{{ pagina }}</a>
+                        <a class="page-link" href="?p={{ pagina }}&term={{request.GET.term}}">{{ pagina }}</a>
                     </li>
                 {% else %}
                     <li class="page-item">
-                        <a class="page-link" href="?p={{ pagina }}">{{ pagina }}</a>
+                        <a class="page-link" href="?p={{ pagina }}&term={{request.GET.term}}">{{ pagina }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
