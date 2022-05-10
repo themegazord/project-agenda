@@ -1,8 +1,9 @@
+from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Contact
 
@@ -32,8 +33,13 @@ def see_contact(request, contact_id):
 def search(request):
     term = request.GET.get('term')
 
-    if term is None:
-        raise Http404()
+    if term is None or not term:
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Campo de pesquisa não pode ficar vazio.'
+        )
+        return redirect('index')
 
 
     fields = Concat('name', Value(' '), 'last_name')
